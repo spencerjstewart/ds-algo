@@ -81,6 +81,16 @@ const TinyTest = {
         }
     },
 
+    assertArrayEquals: function (expected, actual) {
+        if (expected.length !== actual.length) {
+            return false;
+        }
+
+        expected.every(function (el, i) {
+            return el === actual[i];
+        });
+    }
+
 };
 
 const fail                = TinyTest.fail,
@@ -88,4 +98,5 @@ const fail                = TinyTest.fail,
     assertEquals        = TinyTest.assertEquals,
     eq                  = TinyTest.assertEquals, // alias for assertEquals
     assertStrictEquals  = TinyTest.assertStrictEquals,
+    arrayeq             = TinyTest.assertArrayEquals,
     tests               = TinyTest.run;
